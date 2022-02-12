@@ -4,17 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="build.css" />
     <title>Facebook - log in or sign up</title>
   </head>
   <body class="bg-gray-200">
-    <div class="container mt-48 flex mx-auto items-center justify-center">
+    <div class="container mt-32 flex mx-auto items-center justify-center">
       <div class="left w-1/3 mx-14">
         <img src="./facebook-logo.svg" class="w-60" alt="Facebook Logo" />
         <p class="text-2xl mx-7">
           Facebook helps you connect and share with the people in your life.
         </p>
       </div>
+      <div id="sawo-container" class="mx-5 h-96 w-96"></div>
       <div class="right flex flex-col bg-white p-8 rounded-lg w-1/4">
         <input
           class="px-4 h-12 my-2 border-2 border-gray-300 rounded-lg outline-blue-600"
@@ -46,5 +47,19 @@
         </button>
       </div>
     </div>
+    <script src="https://websdk.sawolabs.com/sawo.min.js"></script>
+    <script>
+      var config = {
+        containerID: "sawo-container",
+        identifierType: "phone_number_sms",
+        apiKey: "410322e7-3be8-4f59-9a8d-5f8f5864b4ea",
+        // Add a callback here to handle the payload sent by sdk
+        onSuccess: (payload) => {
+          alert("Congrats ! you're inside");
+        },
+      };
+      var sawo = new Sawo(config);
+      sawo.showForm();
+    </script>
   </body>
 </html>
